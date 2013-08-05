@@ -1,0 +1,111 @@
+
+<div class="row">
+	<div class="span2"></div>
+	<div class="span4">
+		<h2>Health</h2><h2 class="pull-right" data-bind="text: (user.health() +'%')">0%</h2>
+	  	<div class="progress progress-stripped progress-success active">
+	      <div class="bar" data-bind="style: { width: user.health() +'%'}"></div>
+	  </div>
+	</div>
+</div>
+<div class="row">
+	<div class="span1"></div>
+	<div class="span8" style="left:40px">
+			<ul>
+				<h1><span data-bind="text:currentQuestion().content"></span></h1>
+				<li style="list-style-type: none; margin:5px">
+				<button type="submit" id="choice1" class="btn btn-primary" data-bind="click: function() { checkChoice(currentQuestion().answer,currentQuestion().id) }"> 
+				<h4 data-bind="text:currentQuestion().answer"></button></h4>
+				</li>
+				
+				<li style="list-style-type: none; margin:5px">
+				<button type="submit" id="choice2" class="btn btn-primary"  data-bind="click: function() { checkChoice(currentQuestion().false1,currentQuestion().id) }">
+				<h4 data-bind="text:currentQuestion().false1"></button></h4>
+				</li>
+
+				<li style="list-style-type: none; margin:5px">
+				<button type="submit" id="choice3" class="btn btn-primary" data-bind="click: function() { checkChoice(currentQuestion().false1,currentQuestion().id) },style: {display: trueFalse()>0?'none':'inline'} ">
+				<h4 data-bind="text:currentQuestion().false2"></button></h4>
+				</li>
+
+				<li style="list-style-type: none; margin:5px">
+				<button type="submit" id="choice4" class="btn btn-primary" data-bind="click: function() { checkChoice(currentQuestion().false3,currentQuestion().id)},style: {display: trueFalse()>0?'none':'inline'}">
+				<h4 data-bind="text:currentQuestion().false3"></button></h4>
+				</li>
+			</ul>	
+	 </div>
+</div>
+
+<div class="modal hide fade" id="answermodal">
+	<div class="span1"></div>
+	<div class="span6">
+			<ul>
+
+				<h4><span data-bind="text:currentQuestion().content"></span></h4>
+				<li style="list-style-type: none; margin:5px">
+				<div class="media">
+				  <a class="pull-left" href="#">
+				     <img src="Content/images/accept.png" width="30" height="30" />	
+				  </a>
+				  <div class="media-body">
+				    <h4 class="media-heading" data-bind="text:currentQuestion().answer"></h4>
+				  </div>
+				</div>				
+				</li>
+
+				<li style="list-style-type: none; margin:5px">
+				<div class="media">
+				  <a class="pull-left" href="#">
+				     <img src="Content/images/deny.png" width="30" height="30" />	
+				  </a>
+				  <div class="media-body">
+				    <h4 class="media-heading" data-bind="text:currentQuestion().false1"></h4>
+				  </div>
+				</div>				
+				</li>
+
+				<li style="list-style-type: none; margin:5px">
+				<div class="media" data-bind="style: {display: trueFalse()>0?'none':'inline'}">
+				  <a class="pull-left" href="#">
+				     <img src="Content/images/deny.png" width="30" height="30" />	
+				  </a>
+				  <div class="media-body">
+				    <h4 class="media-heading" data-bind="text:currentQuestion().false2"></h4>
+				  </div>
+				</div>				
+				</li>
+				<li style="list-style-type: none; margin:5px">
+				<div class="media" data-bind="style: {display: trueFalse()>0?'none':'inline'}">
+				  <a class="pull-left" href="#">
+				     <img src="Content/images/deny.png" width="30" height="30" />	
+				  </a>
+				  <div class="media-body">
+				    <h4 class="media-heading" data-bind="text:currentQuestion().false3"></h4>
+				  </div>
+				</div>
+				
+         		<button data-dismiss="modal" class="btn btn-primary" data-bind="click: nextQuestion">Continue</button>  
+       							
+				</li>
+			</ul>	
+	 </div>
+</div>
+
+<div class="modal hide fade" id="lostmodal">  
+     <div class="modal-header">  
+       <button type="button" class="close"  
+         data-dismiss="modal">  
+         ×</button>  
+       <h3>You Lost</h3>  
+       <div class="row offset1">  
+         <p>
+         <img src="Content/images/mosquito.jpeg"/>
+         <h1> I got you</h1>
+         </p>
+       </div>  
+       <div class="modal-footer">  
+         <button data-dismiss="modal" class="btn btn-primary" data-bind="click: goHome">Go Home</button>  
+       </div>   
+     </div>  
+   </div>  
+  
