@@ -46,7 +46,20 @@ define([ 'durandal/app', 'durandal/plugins/router'],
             {id:"011", content:"All sicknesses are called malaria.", answer:"False", choice1:"True", choice2:"False",isTrueFalse:"1"}, 
             
             {id:"012", content:"If you suspect you have malaria...", answer:"You should go to a clinic immediately", choice1:"You should see a traditional healer", choice2:"You should ignore it", choice3:"You should take medicine",choice4:"You should go to a clinic immediately",damage:"10"}, 
-            {id:"013", content:"Where do mosquitos lay their eggs?", answer:"In standing water", choice1:"In rapidly moving water", choice2:"In dry areas", choice3:"On the ground",choice4:"In standing water",damage:"10"}]);
+            {id:"013", content:"Where do mosquitos lay their eggs?", answer:"In standing water", choice1:"In rapidly moving water", choice2:"In dry areas", choice3:"On the ground",choice4:"In standing water",damage:"10"},
+            {id:"014", content:"Which organism causes malaria?", answer:"Female Anopheles Mosquito", choice1:" Rex Mosquito", choice2:"Aedes Mosquito", choice3:"Female Anopheles Mosquito",choice4:"Culex Mosquito",damage:"10"},
+
+{id:"015", content:"At what time(s) of the day is this organism active?.", answer:"During the night and at dusk", choice1:"Afternoon", choice2:"During the night and at dusk", choice3:"Morning",choice4:"All of the above",damage:"10"},
+
+{id:"016", content:" Who is most likely to be affected by malaria?", answer:"Children under 5 years", choice1:"Children under 5 years", choice2:"Women", choice3:"Men",choice4:" All of the above",damage:"10"},
+
+{id:"017", content:"This is almost always the most common symptom of malaria.", answer:"Fever", choice1:"Fever", choice2:"Jaundice", choice3:"Diarrhoea",choice4:"Chest Pains",damage:"10"},
+
+{id:"018", content:"How would you know with certainty that a patient has malaria?", answer:"By conducting a blood test", choice1:"When the person has a fever", choice2:"High body temperature", choice3:"Fatigue",choice4:"By conducting a blood test",damage:"10"},
+{id:"019", content:"In case of any malaria symptoms..", answer:"Visit your doctor immediately", choice1:"Wait until you are sure it's malaria", choice2:"Visit your doctor immediately", choice3:"Go get sum drugs at the pharmacy",choice4:"Bath cold water",damage:"10"},
+{id:"020", content:"How many kinds of blood tests are available to detect malaria?", answer:"Two", choice1:"One", choice2:"Two", choice3:"Three",choice4:"Four",damage:"10"},
+
+{id:"021", content:"What is the best way to prevent malaria?", answer:"Use insecticide treated nets", choice1:"Relocate to less prone malaria areas", choice2:"Use insecticide treated nets", choice3:"Take anti-malarial drugs",choice4:"Visit your doctor regularly",damage:"10"}]);
 
         var isBusy = ko.observable(false);
             questionCount=list().length;
@@ -57,7 +70,7 @@ define([ 'durandal/app', 'durandal/plugins/router'],
             return true;
         };
         var selectQuestion=function(){
-            choice(getRandomInt(0,12));
+            choice(getRandomInt(0,questionCount-1));
             var currentIndex=choice();
             currentQuestion(list()[currentIndex]);
             if(currentQuestion().isTrueFalse)            
