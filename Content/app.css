@@ -1,0 +1,11 @@
+﻿
+ .progress {
+    overflow: hidden;
+    height: 50px;
+    background-image: linear-gradient(to bottom,#E41E1E,#E99B9B);
+}
+.progress .bar {
+  height: 50px;
+}
+
+li { list-style-image: url(Content/images/3.gif); font-size:18px; }
