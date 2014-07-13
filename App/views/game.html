@@ -39,6 +39,12 @@
 <div class="modal hide fade" id="answermodal">
 	<div class="span1"></div>
 	<div class="span6">
+	<a class="pull-left" href="#">
+				     <img src="Content/images/happy.jpg" width="300px" data-bind="style:{display:isCorrect()?'inline':'none'}"/>	
+				  </a>
+				  <a class="pull-left" href="#">
+				     <img src="Content/images/wrong.jpg" width="300px" data-bind="style:{display:isCorrect()?'none':'inline'}" />	
+				  </a>
 				<h4 data-bind="style:{display:isCorrect()?'inline':'none'}" class="span5">You are correct</h4>
 				<h4 data-bind="style:{display:isCorrect()?'none':'inline'}" class="span5">You are incorrrect</h4>
 
@@ -85,10 +91,10 @@
        <button type="button" class="close"  
          data-dismiss="modal">  
          ×</button>  
-       <h3>You Won</h3>  
+         
        <div class="row offset1">  
          <p>
-         <img src="Content/images/no_mosquitoes.jpg" width="250" />
+         <img src="Content/images/happychildren.jpg" width="300" />
          <h1> You survived</h1>
          </p>
        </div>  

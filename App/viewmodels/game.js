@@ -114,9 +114,9 @@ for (var i = 0; i < count; i++) {
 */
         var selectQuestion=function(){
             answered++;
-            if(answered>20) {
+            if(answered>5) {
                 gameWon();
-                
+                answered=0;
             }
             choice(getRandomInt(0,14));
             var currentIndex=choice();
@@ -166,7 +166,7 @@ for (var i = 0; i < count; i++) {
             health=user.health();
             if(health<=0) gameLost(); 
             else $("#answermodal").modal("show");
-            if(answered>=15) {
+            if(answered>5) {
                 gameWon();
                 answered=0;
             }
