@@ -1,4 +1,4 @@
-﻿define(function() {
+define(function() {
     var welcome = function () {
         this.displayName = 'Welcome to the S.W.A.T Malaria QUIZ!';
         this.description = 'SWAT Malaria (Standing With Africa to Terminate Malaria)';

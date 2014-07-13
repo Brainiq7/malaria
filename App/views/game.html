@@ -6,8 +6,8 @@
 	  	<div class="progress progress-stripped progress-success active">
 	      <div class="bar" data-bind="style: { width: user.health() +'%'}"></div>
 	  </div>
-	</div>
-</div>
+	</div
+></div>
 <div class="row">
 	<div class="span1"></div>
 	<div class="span8" style="left:40px">
@@ -39,11 +39,11 @@
 <div class="modal hide fade" id="answermodal">
 	<div class="span1"></div>
 	<div class="span6">
-			<ul>
-				<h4 data-bind="style:{display:isCorrect()?'inline':'none'}">You are correct</h4>
-				<h4 data-bind="style:{display:isCorrect()?'none':'inline'}">You are incorrrect</h4>
+				<h4 data-bind="style:{display:isCorrect()?'inline':'none'}" class="span5">You are correct</h4>
+				<h4 data-bind="style:{display:isCorrect()?'none':'inline'}" class="span5">You are incorrrect</h4>
 
-				<h4><span data-bind="text:currentQuestion().content"></span></h4>
+				<h4><span data-bind="text:currentQuestion().content" class="span5" style="margin-left:-5px"></span></h4>
+				<ul class="span5">
 				<li style="list-style-type: none; margin:5px">
 				<div class="media">
 				  <a class="pull-left" href="#">
@@ -80,4 +80,20 @@
        </div>   
      </div>  
    </div>  
-  
+<div class="modal hide fade" id="wonmodal">  
+     <div class="modal-header">  
+       <button type="button" class="close"  
+         data-dismiss="modal">  
+         ×</button>  
+       <h3>You Won</h3>  
+       <div class="row offset1">  
+         <p>
+         <img src="Content/images/no_mosquitoes.jpg" width="250" />
+         <h1> You survived</h1>
+         </p>
+       </div>  
+       <div class="modal-footer">  
+         <button data-dismiss="modal" class="btn btn-primary" data-bind="click: goHome">Go Home</button>  
+       </div>   
+     </div>  
+   </div>  

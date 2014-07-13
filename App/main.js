@@ -20,9 +20,8 @@ define(['durandal/app', 'durandal/viewLocator', 'durandal/system', 'durandal/plu
             //configure routing
             router.useConvention();
             router.mapNav('home');
-            router.mapNav('about');
-            router.mapNav('contact');
             router.mapNav('game');
+            router.mapNav('info');
 
             app.adaptToDevice();
 
