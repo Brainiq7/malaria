@@ -2,104 +2,53 @@
 <div class="row">
 	<div class="span1"></div>
 	<div class="span4">
-		<h2>Health</h2><h2 class="pull-right" data-bind="text: (user.health() +'%')">0%</h2>
-	  	<div class="progress progress-stripped progress-success active">
-	      <div class="bar" data-bind="style: { width: user.health() +'%'}"></div>
+		<h2 class="text-center">Health <span data-bind="html: (user.health() +'%')">0% </span></h2>
+	  	<div class="progress-bar large progress-stripped active">
+	      <div class="bar bg-green" data-bind="style: { width: user.health() +'%'}">	      	
+	      </div>
 	  </div>
+	  
 	</div
 ></div>
 <div class="row">
-	<div class="span1"></div>
-	<div class="span8" style="left:40px">
-			<ul>
-				<h1><span data-bind="text:currentQuestion().content"></span></h1>
-				<li style="list-style-type: none; margin:5px">
-				<button type="submit" id="choice1" class="btn btn-primary" data-bind="click: function() { checkChoice(currentQuestion().choice1,currentQuestion().id) }"> 
-				<h4 data-bind="text:currentQuestion().choice1"></button></h4>
-				</li>
-				
-				<li style="list-style-type: none; margin:5px">
-				<button type="submit" id="choice2" class="btn btn-primary"  data-bind="click: function() { checkChoice(currentQuestion().choice2,currentQuestion().id) }">
-				<h4 data-bind="text:currentQuestion().choice2"></button></h4>
-				</li>
-
-				<li style="list-style-type: none; margin:5px">
-				<button type="submit" id="choice3" class="btn btn-primary" data-bind="click: function() { checkChoice(currentQuestion().choice3,currentQuestion().id) },style: {display: trueFalse()>0?'none':'inline'} ">
-				<h4 data-bind="text:currentQuestion().choice3"></button></h4>
-				</li>
-
-				<li style="list-style-type: none; margin:5px">
-				<button type="submit" id="choice4" class="btn btn-primary" data-bind="click: function() { checkChoice(currentQuestion().choice4,currentQuestion().id)},style: {display: trueFalse()>0?'none':'inline'}">
-				<h4 data-bind="text:currentQuestion().choice4"></button></h4>
-				</li>
-			</ul>	
+	<div style="left:20px;width=100%">
+	<h1 class="span5"><span data-bind="text:currentQuestion().content"></span></h1>
+	<div class="span5">
+                                <div class="listview">
+                                    <a href="#" class="list bg-lightBlue fg-white" id="choice1" class="button primary" data-bind="click: function() { checkChoice(currentQuestion().choice1,currentQuestion().id) }">
+                                        <div class="list-content">
+                                            <img src="Content/images/bullet_triangle_blue.png" class="icon">
+                                            <div class="data">
+                                                <span class="list-content" data-bind="text:currentQuestion().choice1" style="font-size:20px;font-weight:bold"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list bg-lightBlue fg-white" id="choice2"  data-bind="click: function() { checkChoice(currentQuestion().choice2,currentQuestion().id) }">
+                                        <div class="list-content">
+                                            <img src="Content/images/bullet_triangle_blue.png" class="icon">
+                                           <div class="data">
+                                                <span class="list-content" data-bind="text:currentQuestion().choice2" style="font-size:20px;font-weight:bold"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list bg-lightBlue fg-white" id="choice3"data-bind="click: function() { checkChoice(currentQuestion().choice3,currentQuestion().id) },style: {display: trueFalse()>0?'none':'block'}">
+                                        <div class="list-content">
+                                            <img src="Content/images/bullet_triangle_blue.png" class="icon">
+                                            <div class="data">
+                                                <span class="list-content" data-bind="text:currentQuestion().choice3" style="font-size:20px;font-weight:bold"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                     <a href="#" class="list bg-lightBlue fg-white" id="choice4" data-bind="click: function() { checkChoice(currentQuestion().choice4,currentQuestion().id)},style: {display: trueFalse()>0?'none':'block'}">
+                                        <div class="list-content">
+                                            <img src="Content/images/bullet_triangle_blue.png" class="icon">
+                                            <div class="data">
+                                                <span class="list-content" data-bind="text:currentQuestion().choice4" style="font-size:20px;font-weight:bold"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>			
 	 </div>
 </div>
 
-<div class="modal hide fade" id="answermodal">
-	<div class="span1"></div>
-	<div class="span6">
-	<a class="pull-left" href="#">
-				     <img src="Content/images/happy.jpg" width="300px" data-bind="style:{display:isCorrect()?'inline':'none'}"/>	
-				  </a>
-				  <a class="pull-left" href="#">
-				     <img src="Content/images/wrong.jpg" width="300px" data-bind="style:{display:isCorrect()?'none':'inline'}" />	
-				  </a>
-				<h4 data-bind="style:{display:isCorrect()?'inline':'none'}" class="span5">You are correct</h4>
-				<h4 data-bind="style:{display:isCorrect()?'none':'inline'}" class="span5">You are incorrrect</h4>
-
-				<h4><span data-bind="text:currentQuestion().content" class="span5" style="margin-left:-5px"></span></h4>
-				<ul class="span5">
-				<li style="list-style-type: none; margin:5px">
-				<div class="media">
-				  <a class="pull-left" href="#">
-				     <img src="Content/images/accept.png" width="30" height="30" />	
-				  </a>
-				  <div class="media-body">
-				    <h4 class="media-heading" data-bind="text:currentQuestion().answer"></h4>
-				  </div>
-				</div>				
-				</li>
-<li style="list-style-type: none; margin:5px">			
-				
-         		<button data-dismiss="modal" class="btn btn-primary" data-bind="click: selectQuestion">Continue</button>  
-       							
-				</li>
-			</ul>	
-	 </div>
-</div>
-
-<div class="modal hide fade" id="lostmodal">  
-     <div class="modal-header">  
-       <button type="button" class="close"  
-         data-dismiss="modal">  
-         ×</button>  
-       <h3>You Lost</h3>  
-       <div class="row offset1">  
-         <p>
-         <img src="Content/images/mosquito.jpeg"/>
-         <h1> I got you</h1>
-         </p>
-       </div>  
-       <div class="modal-footer">  
-         <button data-dismiss="modal" class="btn btn-primary" data-bind="click: goHome">Go Home</button>  
-       </div>   
-     </div>  
-   </div>  
-<div class="modal hide fade" id="wonmodal">  
-     <div class="modal-header">  
-       <button type="button" class="close"  
-         data-dismiss="modal">  
-         ×</button>  
-         
-       <div class="row offset1">  
-         <p>
-         <img src="Content/images/happychildren.jpg" width="300" />
-         <h1> You survived</h1>
-         </p>
-       </div>  
-       <div class="modal-footer">  
-         <button data-dismiss="modal" class="btn btn-primary" data-bind="click: goHome">Go Home</button>  
-       </div>   
-     </div>  
-   </div>  

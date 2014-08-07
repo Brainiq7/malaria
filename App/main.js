@@ -22,8 +22,12 @@ define(['durandal/app', 'durandal/viewLocator', 'durandal/system', 'durandal/plu
             router.mapNav('home');
             router.mapNav('game');
             router.mapNav('info');
+            router.mapNav('pictures');
+            router.mapNav('sponsors');
+            router.mapNav('prevention');
+            router.mapNav('videos');
 
-            app.adaptToDevice();
+            //app.adaptToDevice();
 
             //Show the app by setting the root view model for our application with a transition.
             app.setRoot('viewmodels/shell', 'entrance');

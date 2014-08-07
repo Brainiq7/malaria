@@ -25,9 +25,9 @@ define([ 'durandal/app', 'durandal/plugins/router'],
         };
 
         var OriginalQuestions = ko.mapping.fromJS([ 
-            {id:"001", content:"How is malaria spread?", answer:"By mosquito bites", choice1:"By mosquito bites",choice2:"Eating roadside food", choice3:"Through witchcraft and sorcery", choice4:"By contaminated water", damage:"10"}, 
+            {id:"001", content:"How is malaria spread?", answer:"By mosquito bites", choice1:"By mosquito bites",choice2:"Eating roadside food", choice3:"Through witchcraft and sorcery", choice4:"By contaminated water", damage:"15"}, 
             {id:"002", content:"Who is at risk for malaria?", answer:"Everyone!", choice1:"People who live in Africa", choice2:"Half of the world's population", choice3:"People who live in Alaska", choice4:"Everyone!", damage:"20"}, 
-            {id:"003", content:"Who is at most risk for malaria?", answer:"Pregnant women and children", choice1:"Old men and women", choice2:"Teenagers and adolescents", choice3:"Young adults", choice4:"Pregnant women and children",damage:"10"}, 
+            {id:"003", content:"Who is at most risk for malaria?", answer:"Pregnant women and children", choice1:"Old men and women", choice2:"Teenagers and adolescents", choice3:"Young adults", choice4:"Pregnant women and children",damage:"20"}, 
             {id:"004", content:"What is the best way to prevent malaria?", answer:"Sleeping under an insecticide-treated bed net", choice1:"Washing and bathing thoroughly", choice2:"Cooking food in clean locations", choice3:"Sleeping outside in the outside air",choice4:"Sleeping under an insecticide-treated bed net",damage:"15"}, 
             {id:"005", content:"When do malaria-carrying mosquitos usually bite?", answer:"At dawn and dusk", choice1:"Noon", choice2:"During cool weather", choice3:"All the time",choice4:"At dawn and dusk",damage:"10"}, 
             
@@ -42,13 +42,13 @@ define([ 'durandal/app', 'durandal/plugins/router'],
             
             {id:"012", content:"If you suspect you have malaria...", answer:"You should go to a clinic immediately", choice1:"You should see a traditional healer", choice2:"You should ignore it", choice3:"You should take medicine",choice4:"You should go to a clinic immediately",damage:"10"}, 
             {id:"013", content:"Where do mosquitos lay their eggs?", answer:"In standing water", choice1:"In rapidly moving water", choice2:"In dry areas", choice3:"On the ground",choice4:"In standing water",damage:"10"},
-            {id:"014", content:"Which organism causes malaria?", answer:"Female Anopheles Mosquito", choice1:" Rex Mosquito", choice2:"Aedes Mosquito", choice3:"Female Anopheles Mosquito",choice4:"Culex Mosquito",damage:"10"},
+            {id:"014", content:"Which organism causes malaria?", answer:"Female Anopheles Mosquito", choice1:" Rex Mosquito", choice2:"Aedes Mosquito", choice3:"Female Anopheles Mosquito",choice4:"Culex Mosquito",damage:"15"},
 
-            {id:"015", content:"At what time(s) of the day is this organism active?.", answer:"During the night and at dusk", choice1:"Afternoon", choice2:"During the night and at dusk", choice3:"Morning",choice4:"All of the above",damage:"10"},
+            {id:"015", content:"At what time(s) of the day is this organism active?.", answer:"During the night and at dusk", choice1:"Afternoon", choice2:"During the night and at dusk", choice3:"Morning",choice4:"All of the above",damage:"15"},
 
-            {id:"016", content:" Who is most likely to be affected by malaria?", answer:"Children under 5 years", choice1:"Children under 5 years", choice2:"Women", choice3:"Men",choice4:" All of the above",damage:"10"},
+            {id:"016", content:" Who is most likely to be affected by malaria?", answer:"Children under 5 years", choice1:"Children under 5 years", choice2:"Women", choice3:"Men",choice4:" All of the above",damage:"15"},
 
-            {id:"017", content:"This is almost always the most common symptom of malaria.", answer:"Fever", choice1:"Fever", choice2:"Jaundice", choice3:"Diarrhoea",choice4:"Chest Pains",damage:"10"},
+            {id:"017", content:"This is almost always the most common symptom of malaria.", answer:"Fever", choice1:"Fever", choice2:"Jaundice", choice3:"Diarrhoea",choice4:"Chest Pains",damage:"15"},
 
             {id:"018", content:"How would you know with certainty that a patient has malaria?", answer:"By conducting a blood test", choice1:"When the person has a fever", choice2:"High body temperature", choice3:"Fatigue",choice4:"By conducting a blood test",damage:"10"},
             {id:"019", content:"In case of any malaria symptoms..", answer:"Visit your doctor immediately", choice1:"Wait until you are sure it's malaria", choice2:"Visit your doctor immediately", choice3:"Go get sum drugs at the pharmacy",choice4:"Bath cold water",damage:"10"},
@@ -61,7 +61,7 @@ questionCount=OriginalQuestions().length;
 
         //Run when viewmodel is called
         var activate = function () {
-        answered=0; 
+            answered=0; 
             //loadQuestions();   
             selectQuestion();        
             return true;
@@ -111,10 +111,10 @@ for (var i = 0; i < count; i++) {
                 item().choice4=scrambledChoices()[3];
             }
         }
-*/
+        */
         var selectQuestion=function(){
             answered++;
-            if(answered>5) {
+            if(answered>10) {
                 gameWon();
                 answered=0;
             }
@@ -128,12 +128,38 @@ for (var i = 0; i < count; i++) {
         };
 
         var gameLost=function(){
-            $("#lostmodal").modal("show");
+             $.Dialog({
+                        overlay: true,
+                        shadow: true,
+                        flat: true,
+                        icon: '',
+                        sysButtons:false,
+                        width:320,
+                        height:420,
+                        title: 'You Lost',
+                        padding: 10,
+                        content: '<h1> I got you</h1><a href="#/home" class="button primary large" onclick="$.Dialog.close()">Go HOme</a><img src="Content/images/mosquito.jpeg"/>'
+                    });
+             user.health(100);
+            //$("#lostmodal").modal("show");
             //$("#modal-content,#modal-background").toggleClass("active");
         }
 
-       var gameWon=function(){
-            $("#wonmodal").modal("show");
+        var gameWon=function(){
+            $.Dialog({
+                        overlay: true,
+                        shadow: true,
+                        flat: true,
+                        icon: '',
+                        sysButtons:false,
+                        title: 'You Won',
+                        width:320,
+                        height:420,
+                        padding: 10,
+                        content: '<h1> Congratulations!!!</h1><a href="#/home" class="button primary large" onclick="$.Dialog.close()">Go HOme</a><img src="Content/images/happychildren.jpg"/>'
+                    });
+            user.health(100);
+            //$("#wonmodal").modal("show");
             //$("#modal-content,#modal-background").toggleClass("active");
         }
 
@@ -155,7 +181,7 @@ for (var i = 0; i < count; i++) {
             var ans=OriginalQuestions()[currentIndex].answer();
             if(ans!=selectedChoice)
             {
-                var damage=5;
+                var damage=10;
                 if(currentQuestion().damage)
                     damage = currentQuestion().damage();
                 user.health(user.health()-damage);
@@ -165,8 +191,40 @@ for (var i = 0; i < count; i++) {
             
             health=user.health();
             if(health<=0) gameLost(); 
-            else $("#answermodal").modal("show");
-            if(answered>5) {
+            else {
+                //$("#answermodal").modal("show");
+                if(isCorrect()){
+                    selectQuestion();
+                    $.Dialog({
+                        overlay: true,
+                        shadow: true,
+                        flat: true,
+                        icon: '',
+                        width:320,
+                        height:400,
+                        sysButtons:false,
+                        title: 'You are correct',
+                        padding: 10,
+                        content: '<button class="button primary large" onclick="$.Dialog.close()">OK</button> <p></p><img src="Content/images/happy.jpg" width="300" height="300"><p></p>'
+                    });
+                }
+                else {
+                    selectQuestion();
+                    $.Dialog({
+                        overlay: true,
+                        shadow: true,
+                        flat: true,
+                        icon: '',
+                        sysButtons:false,
+                        title: 'You are wrong',
+                        width:320,
+                        height:400,
+                        padding: 10,
+                        content: '<button class="button primary large" onclick="$.Dialog.close()">OK</button> <p></p><img src="Content/images/wrong.jpg" width="300" height="300"><p></p>'
+                    });
+                }
+            }
+            if(answered>10) {
                 gameWon();
                 answered=0;
             }
